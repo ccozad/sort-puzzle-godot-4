@@ -1,3 +1,45 @@
-[gd_scene format=3 uid="uid://dtpu34rpdfkg0"]
+[gd_scene load_steps=4 format=3 uid="uid://dtpu34rpdfkg0"]
+
+[ext_resource type="PackedScene" uid="uid://btdjnci7f233w" path="res://scenes/six_ring_stack.tscn" id="1_hecyf"]
+[ext_resource type="Script" path="res://main.gd" id="1_t24a0"]
+[ext_resource type="Environment" uid="uid://d3unpsgy7av1h" path="res://main_envrionment.tres" id="3_xwjow"]
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_t24a0")
+
+[node name="six-ring-stack" parent="." instance=ExtResource("1_hecyf")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.20975, 9.66145)
+environment = ExtResource("3_xwjow")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("3_xwjow")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.1519, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UpdateMaterialsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Update Materials"
+
+[node name="PopButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Pop"
+
+[node name="PushRedButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Push Red"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/UpdateMaterialsButton" to="." method="_on_update_materials_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/PopButton" to="." method="_on_pop_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/PushRedButton" to="." method="_on_push_red_button_pressed"]
