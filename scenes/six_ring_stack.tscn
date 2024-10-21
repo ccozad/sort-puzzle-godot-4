@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://btdjnci7f233w"]
+[gd_scene load_steps=10 format=3 uid="uid://btdjnci7f233w"]
 
 [ext_resource type="PackedScene" uid="uid://dyv8uotapqkt4" path="res://models/six-ring-stack.glb" id="1_0y88p"]
 [ext_resource type="Script" path="res://scenes/six_ring_stack.gd" id="2_q8toq"]
-[ext_resource type="Material" path="res://materials/wood.tres" id="2_tp14r"]
-[ext_resource type="Material" uid="uid://dssapbth3lcaj" path="res://materials/default.tres" id="4_uegrf"]
+[ext_resource type="Material" uid="uid://d4i687aypi2eb" path="res://materials/wood.tres" id="2_tp14r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_u7k3p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0o5y5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmxlf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_640j8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ukh3e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm87d"]
 
 [node name="six-ring-stack" instance=ExtResource("1_0y88p")]
 script = ExtResource("2_q8toq")
@@ -15,19 +26,25 @@ surface_material_override/0 = ExtResource("2_tp14r")
 surface_material_override/0 = ExtResource("2_tp14r")
 
 [node name="Ring_1" parent="." index="2"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_u7k3p")
 
 [node name="Ring_0" parent="." index="3"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_0o5y5")
 
 [node name="Ring_2" parent="." index="4"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_cmxlf")
 
 [node name="Ring_4" parent="." index="5"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_640j8")
 
 [node name="Ring_3" parent="." index="6"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_ukh3e")
 
 [node name="Ring_5" parent="." index="7"]
-surface_material_override/0 = ExtResource("4_uegrf")
+visible = false
+surface_material_override/0 = SubResource("StandardMaterial3D_gm87d")

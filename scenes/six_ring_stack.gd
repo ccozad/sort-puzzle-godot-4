@@ -14,20 +14,13 @@ var color_map = {
 	"green": Color(0, 1, 0),
 	"pink": Color(1, 0, 1),
 	"teal": Color(0, 1, 1),
-	"yellow": Color(1, 1, 0)
+	"yellow": Color(1, 1, 0),
+	"white": Color(1, 1, 1)
 }
 
 var ring_meshes = []
 
 var ring_groups = []
-# ring_grouops = [
-# 	{ "count": 1, "color": "red"},
-# 	{ "count": 1, "color": "green"},
-# 	{ "count": 1, "color": "blue"},
-# 	{ "count": 1, "color": "teal"},
-# 	{ "count": 1, "color": "pink"},
-# 	{ "count": 1, "color": "yellow"}
-# ]
 
 const max_capacity = 6
 var item_count = 0 
@@ -44,6 +37,8 @@ func top():
 	else:
 		return ring_groups[-1]
 
+# Pushes the group if there is room and the color of the group 
+# matches the top group
 func push(group):
 	print("Attempting to push with group" + str(group))
 	var can_push = false
@@ -74,8 +69,11 @@ func push(group):
 	update_materials()
 	return can_push
 
+# Removes the last group added to the spindle and returns it. 
+# Returns null if the spindle is empty
 func pop():
 	if ring_groups.size() == 0:
+		update_materials()
 		return null
 	else:
 		var last_group = ring_groups.pop_back()
@@ -83,6 +81,7 @@ func pop():
 		update_materials()
 		return last_group
 
+# Updates the visibility and color of all rings 
 func update_materials():
 	for mesh in ring_meshes:
 		mesh.visible = false
@@ -106,4 +105,15 @@ func _ready():
 		ring_4,
 		ring_5
 	]
+	
+	ring_groups = [
+ 		{ "count": 1, "color": "red"},
+ 		{ "count": 1, "color": "green"},
+ 		{ "count": 1, "color": "blue"},
+ 		{ "count": 1, "color": "white"},
+ 		{ "count": 1, "color": "pink"},
+ 		{ "count": 1, "color": "yellow"}
+	]
+	
+	item_count = 6
 	
