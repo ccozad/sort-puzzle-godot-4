@@ -23,7 +23,8 @@ var ring_meshes = []
 var ring_groups = []
 
 const max_capacity = 6
-var item_count = 0 
+var item_count = 0
+var selected = false 
 
 func init(_ring_groups):
 	ring_groups = _ring_groups
@@ -87,14 +88,25 @@ func update_materials():
 		mesh.visible = false
 	
 	var current_index = 0
+	var group_index = 0
+	var last_group_index = ring_groups.size() - 1
 	for group in ring_groups:
 		for i in range(current_index, current_index + group.count):
 			ring_meshes[i].visible = true
 			if color_map.has(group.color):
 				var material: StandardMaterial3D = ring_meshes[i].get_surface_override_material(0) as StandardMaterial3D
 				material.albedo_color = color_map[group.color]
+				if group_index == last_group_index and selected:
+					material.rim_enabled = true
+				elif group_index == last_group_index and not selected:
+					material.rim_enabled = false
 
 		current_index = current_index + group.count
+		group_index = group_index + 1
+
+func toggle_selection():
+	selected = not selected
+	update_materials()
 
 func _ready():
 	ring_meshes = [
@@ -116,4 +128,10 @@ func _ready():
 	]
 	
 	item_count = 6
-	
+
+func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
+			print("Six Ring Stack Pressed")
+			toggle_selection()
+		
