@@ -79,6 +79,7 @@ func pop():
 	else:
 		var last_group = ring_groups.pop_back()
 		item_count = item_count - last_group.count
+		selected = false
 		update_materials()
 		return last_group
 
@@ -106,7 +107,12 @@ func update_materials():
 
 func toggle_selection():
 	selected = not selected
+	
 	update_materials()
+	if selected:
+		SoundManager.select_rings()
+	else:
+		SoundManager.unselect_rings()
 
 func _ready():
 	ring_meshes = [
