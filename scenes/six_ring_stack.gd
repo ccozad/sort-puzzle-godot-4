@@ -1,6 +1,8 @@
 class_name SixRingStack
 extends Node3D
 
+signal clicked(id)
+
 @onready var ring_0: MeshInstance3D = $Ring_0
 @onready var ring_1: MeshInstance3D = $Ring_1
 @onready var ring_2: MeshInstance3D = $Ring_2
@@ -24,9 +26,13 @@ var ring_groups = []
 
 const max_capacity = 6
 var item_count = 0
-var selected = false 
+var selected = false
+var id = "0" 
 
-func init(parameters):
+func init(root_node, parameters):
+	if parameters.has("id"):
+		id = parameters.id
+	
 	if parameters.has("ring_groups"):
 		ring_groups = parameters.ring_groups
 	item_count = 0
@@ -36,9 +42,11 @@ func init(parameters):
 	if parameters.has("custom_transform"):
 		if parameters.custom_transform.has("position"):
 			self.translate(parameters.custom_transform.position)
+	
+	connect("clicked", Callable(root_node, "_on_ring_stack_clicked"))
 
 func top():
-	if ring_groups.count == 0:
+	if ring_groups.size() == 0:
 		return null
 	else:
 		return ring_groups[-1]
@@ -113,10 +121,20 @@ func update_materials():
 		group_index = group_index + 1
 
 func toggle_selection():
-	selected = not selected
-	
-	update_materials()
 	if item_count:
+		selected = not selected
+	
+		update_materials()
+		if selected:
+			SoundManager.select_rings()
+		else:
+			SoundManager.unselect_rings()
+
+func set_selected(_selected):
+	if item_count:
+		selected = _selected
+		update_materials()
+	
 		if selected:
 			SoundManager.select_rings()
 		else:
@@ -133,9 +151,8 @@ func _ready():
 	]
 	update_materials()
 
-func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
+func _on_area_3d_input_event(_camera: Node, event: InputEvent, _event_position: Vector3, _normal: Vector3, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			print("Six Ring Stack Pressed")
-			toggle_selection()
+			clicked.emit(id)
 		

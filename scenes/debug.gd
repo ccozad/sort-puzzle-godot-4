@@ -28,4 +28,8 @@ func _process(delta: float) -> void:
 		"VRAM: " + "%0.1f" % VRAM + " MB\n" + \
 		"Ring count: " + str(ring_count) + "\n" + \
 		"Ring holder count: " + str(ring_holder_count)
+		
+		if GameManager.source_id:
+			data += "\nSource ID: " + GameManager.source_id
+		
 		text = data
