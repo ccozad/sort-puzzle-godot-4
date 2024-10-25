@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtpu34rpdfkg0"]
+[gd_scene load_steps=4 format=3 uid="uid://dtpu34rpdfkg0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_t24a0"]
+[ext_resource type="PackedScene" uid="uid://ckapkkncxg1fr" path="res://scenes/debug.tscn" id="3_hghuf"]
 [ext_resource type="Environment" uid="uid://d3unpsgy7av1h" path="res://main_envrionment.tres" id="3_xwjow"]
 
 [node name="Node3D" type="Node3D"]
@@ -19,55 +20,18 @@ light_energy = 0.5
 sky_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+[node name="DebugContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
 offset_right = 40.0
-offset_bottom = 40.0
+grow_vertical = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+[node name="Debug" parent="CanvasLayer/DebugContainer" instance=ExtResource("3_hghuf")]
 layout_mode = 2
-
-[node name="UpdateMaterialsButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Update Materials"
-
-[node name="PopButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Pop"
-
-[node name="PushRedButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Red"
-
-[node name="PushGreenButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Green"
-
-[node name="PushBlueButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Blue"
-
-[node name="PushPinkButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Pink"
-
-[node name="PushTealButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Teal"
-
-[node name="PushYellowButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "Push Yellow"

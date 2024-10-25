@@ -19,10 +19,16 @@ config/icon="res://icon.svg"
 
 SoundManager="*res://autoload/sound_manager.tscn"
 GameManager="*res://autoload/game_manager.gd"
+LevelManager="*res://autoload/level_manager.gd"
 
 [filesystem]
 
 import/blender/enabled=false
+
+[global_group]
+
+Rings=""
+"Ring Holder"=""
 
 [rendering]
 
