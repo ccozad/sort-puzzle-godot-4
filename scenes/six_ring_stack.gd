@@ -90,8 +90,9 @@ func pop():
 
 # Updates the visibility and color of all rings 
 func update_materials():
-	for mesh in ring_meshes:
+	for mesh: MeshInstance3D in ring_meshes:
 		mesh.visible = false
+		mesh.remove_from_group("Ring")
 	
 	var current_index = 0
 	var group_index = 0
@@ -99,6 +100,7 @@ func update_materials():
 	for group in ring_groups:
 		for i in range(current_index, current_index + group.count):
 			ring_meshes[i].visible = true
+			ring_meshes[i].add_to_group("Ring")
 			if color_map.has(group.color):
 				var material: StandardMaterial3D = ring_meshes[i].get_surface_override_material(0) as StandardMaterial3D
 				material.albedo_color = color_map[group.color]

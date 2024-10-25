@@ -26,7 +26,7 @@ resource_local_to_scene = true
 height = 4.4
 radius = 1.3
 
-[node name="six-ring-stack" instance=ExtResource("1_0y88p")]
+[node name="six-ring-stack" groups=["Ring Holder"] instance=ExtResource("1_0y88p")]
 script = ExtResource("2_q8toq")
 
 [node name="Base" parent="." index="0"]
@@ -35,22 +35,22 @@ surface_material_override/0 = ExtResource("2_tp14r")
 [node name="Spindle" parent="." index="1"]
 surface_material_override/0 = ExtResource("2_tp14r")
 
-[node name="Ring_1" parent="." index="2"]
+[node name="Ring_1" parent="." index="2" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_u7k3p")
 
-[node name="Ring_0" parent="." index="3"]
+[node name="Ring_0" parent="." index="3" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_0o5y5")
 
-[node name="Ring_2" parent="." index="4"]
+[node name="Ring_2" parent="." index="4" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_cmxlf")
 
-[node name="Ring_4" parent="." index="5"]
+[node name="Ring_4" parent="." index="5" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_640j8")
 
-[node name="Ring_3" parent="." index="6"]
+[node name="Ring_3" parent="." index="6" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_ukh3e")
 
-[node name="Ring_5" parent="." index="7"]
+[node name="Ring_5" parent="." index="7" groups=["Ring"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_gm87d")
 
 [node name="Area3D" type="Area3D" parent="." index="8"]
