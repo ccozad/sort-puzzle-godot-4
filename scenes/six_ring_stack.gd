@@ -26,11 +26,16 @@ const max_capacity = 6
 var item_count = 0
 var selected = false 
 
-func init(_ring_groups):
-	ring_groups = _ring_groups
+func init(parameters):
+	if parameters.has("ring_groups"):
+		ring_groups = parameters.ring_groups
 	item_count = 0
 	for group in ring_groups:
 		item_count = item_count + group.count
+	
+	if parameters.has("custom_transform"):
+		if parameters.custom_transform.has("position"):
+			self.translate(parameters.custom_transform.position)
 
 func top():
 	if ring_groups.count == 0:
@@ -109,10 +114,11 @@ func toggle_selection():
 	selected = not selected
 	
 	update_materials()
-	if selected:
-		SoundManager.select_rings()
-	else:
-		SoundManager.unselect_rings()
+	if item_count:
+		if selected:
+			SoundManager.select_rings()
+		else:
+			SoundManager.unselect_rings()
 
 func _ready():
 	ring_meshes = [
@@ -123,17 +129,7 @@ func _ready():
 		ring_4,
 		ring_5
 	]
-	
-	ring_groups = [
- 		{ "count": 1, "color": "red"},
- 		{ "count": 1, "color": "green"},
- 		{ "count": 1, "color": "blue"},
- 		{ "count": 1, "color": "white"},
- 		{ "count": 1, "color": "pink"},
- 		{ "count": 1, "color": "yellow"}
-	]
-	
-	item_count = 6
+	update_materials()
 
 func _on_area_3d_input_event(camera: Node, event: InputEvent, event_position: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
