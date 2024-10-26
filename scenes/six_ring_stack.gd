@@ -27,11 +27,15 @@ var ring_groups = []
 const max_capacity = 6
 var item_count = 0
 var selected = false
-var id = "0" 
+var id = "0"
+var target = 0 
 
 func init(root_node, parameters):
 	if parameters.has("id"):
 		id = parameters.id
+	
+	if parameters.target:
+		target = parameters.target
 	
 	if parameters.has("ring_groups"):
 		ring_groups = parameters.ring_groups
@@ -44,6 +48,17 @@ func init(root_node, parameters):
 			self.translate(parameters.custom_transform.position)
 	
 	connect("clicked", Callable(root_node, "_on_ring_stack_clicked"))
+
+func is_solved():
+	var size = ring_groups.size()
+	if size == 0:
+		# Empty stack
+		return true
+	elif size == 1 and ring_groups[-1].count == target:
+		# One group with the correct target count
+		return true
+	else:
+		return false
 
 func top():
 	if ring_groups.size() == 0:

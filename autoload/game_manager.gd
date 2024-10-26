@@ -4,6 +4,7 @@ const SIX_RING_STACK = preload("res://scenes/six_ring_stack.tscn")
 
 var source_id = null
 var destination_id = null
+var all_solved = false
 
 var ring_stacks = {}
 
@@ -12,6 +13,14 @@ func spawn_ring_stack(root_node, parameters):
 	ring_stack.init(root_node, parameters)
 	ring_stacks[ring_stack.id] = ring_stack
 	root_node.add_child(ring_stack)
+
+func calculate_all_solved():
+	var result = true
+	for id in ring_stacks.keys():
+		result = result and ring_stacks[id].is_solved()
+	
+	all_solved = result
+	return result	
 
 func process_ring_stack_click(id):
 	if source_id == null:
@@ -42,4 +51,5 @@ func process_ring_stack_click(id):
 		ring_stacks[source_id].set_selected(false)
 		source_id = null
 		destination_id = null
+		calculate_all_solved()
 			

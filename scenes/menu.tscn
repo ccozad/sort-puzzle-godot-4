@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://e5o2kdfami1j"]
+
+[ext_resource type="FontFile" uid="uid://chorqpu0y003a" path="res://fonts/Cartoonish.ttf" id="1_f6m2k"]
+[ext_resource type="Script" path="res://scenes/menu.gd" id="1_ixbt7"]
+
+[sub_resource type="Environment" id="Environment_tg4eq"]
+background_mode = 1
+
+[node name="Menu" type="Node3D"]
+script = ExtResource("1_ixbt7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tg4eq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -108.5
+offset_top = -117.5
+offset_right = 108.5
+offset_bottom = 117.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_f6m2k")
+theme_override_font_sizes/font_size = 50
+text = "Start"
+
+[node name="SettingsButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_f6m2k")
+theme_override_font_sizes/font_size = 50
+text = "Settings"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_f6m2k")
+theme_override_font_sizes/font_size = 50
+text = "Exit
+"
+
+[node name="TitleContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -259.0
+offset_right = 259.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="TitleLabel" type="Label" parent="CanvasLayer/TitleContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_f6m2k")
+theme_override_font_sizes/font_size = 100
+text = "calm sort"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
