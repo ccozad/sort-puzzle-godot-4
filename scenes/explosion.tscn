@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://qcn6adknoe2m"]
+[gd_scene load_steps=5 format=3 uid="uid://qcn6adknoe2m"]
+
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_hc6pm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lrx02"]
 transparency = 1
@@ -12,24 +14,24 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ckl7s"]
 material = SubResource("StandardMaterial3D_lrx02")
-size = Vector2(0.4, 0.4)
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="Gradient" id="Gradient_hs4f5"]
 offsets = PackedFloat32Array(0.32, 1)
 colors = PackedColorArray(1, 0.517647, 0.0823529, 1, 1, 1, 1, 0)
 
 [node name="Explosion" type="Node3D"]
+script = ExtResource("1_hc6pm")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 200
-lifetime = 1.5
-explosiveness = 0.97
+explosiveness = 0.92
 randomness = 0.35
 mesh = SubResource("QuadMesh_ckl7s")
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 20.0
-initial_velocity_max = 20.0
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
 color = Color(1, 0.517647, 0.0823529, 1)
 color_ramp = SubResource("Gradient_hs4f5")
 hue_variation_min = 0.28

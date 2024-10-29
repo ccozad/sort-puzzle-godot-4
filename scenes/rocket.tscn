@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqjvy5wkwforw"]
+
+[ext_resource type="Script" path="res://scenes/rocket.gd" id="1_s438p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sayrt"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_18vu7"]
+material = SubResource("StandardMaterial3D_sayrt")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_e6wow"]
+colors = PackedColorArray(1, 1, 0.486275, 1, 1, 1, 0.972549, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1dwef"]
+
+[node name="Rocket" type="RigidBody3D"]
+script = ExtResource("1_s438p")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 20
+lifetime = 0.3
+mesh = SubResource("QuadMesh_18vu7")
+direction = Vector3(0, -1, 0)
+spread = 20.0
+color_ramp = SubResource("Gradient_e6wow")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_1dwef")
