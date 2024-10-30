@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b58vho4u2btxf"]
+
+[ext_resource type="Script" path="res://scenes/rocket_show.gd" id="1_76n7i"]
+
+[node name="RocketShow" type="Node"]
+script = ExtResource("1_76n7i")
