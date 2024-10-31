@@ -12,6 +12,9 @@ var ring_stacks = {}
 signal level_completed()
 var level_completed_broadcast = false
 
+func reset_level():
+	level_completed_broadcast = false
+
 func spawn_ring_stack(root_node, parameters):
 	print("Spawn ring stack")
 	var ring_stack = SIX_RING_STACK.instantiate()

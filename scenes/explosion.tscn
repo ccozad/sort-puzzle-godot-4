@@ -14,7 +14,7 @@ particles_anim_loop = false
 
 [sub_resource type="QuadMesh" id="QuadMesh_ckl7s"]
 material = SubResource("StandardMaterial3D_lrx02")
-size = Vector2(0.1, 0.1)
+size = Vector2(0.15, 0.15)
 
 [sub_resource type="Gradient" id="Gradient_hs4f5"]
 offsets = PackedFloat32Array(0.32, 1)

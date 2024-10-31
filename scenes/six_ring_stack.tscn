@@ -36,21 +36,27 @@ surface_material_override/0 = ExtResource("2_tp14r")
 surface_material_override/0 = ExtResource("2_tp14r")
 
 [node name="Ring_1" parent="." index="2" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_u7k3p")
 
 [node name="Ring_0" parent="." index="3" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_0o5y5")
 
 [node name="Ring_2" parent="." index="4" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_cmxlf")
 
 [node name="Ring_4" parent="." index="5" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_640j8")
 
 [node name="Ring_3" parent="." index="6" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_ukh3e")
 
 [node name="Ring_5" parent="." index="7" groups=["Ring"]]
+cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_gm87d")
 
 [node name="Area3D" type="Area3D" parent="." index="8"]

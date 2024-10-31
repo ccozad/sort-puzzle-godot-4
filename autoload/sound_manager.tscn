@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cg5g4qte3kl3u"]
+[gd_scene load_steps=6 format=3 uid="uid://cg5g4qte3kl3u"]
 
 [ext_resource type="Script" path="res://autoload/sound_manager.gd" id="1_mg75h"]
 [ext_resource type="AudioStream" uid="uid://dyu8edo5thm4b" path="res://sounds/select.wav" id="1_vqlrj"]
 [ext_resource type="AudioStream" uid="uid://d0ap1sjcw1knx" path="res://sounds/unselect.wav" id="3_vyc5s"]
+[ext_resource type="AudioStream" uid="uid://dr55wp86121bm" path="res://sounds/win.wav" id="4_mqwba"]
+[ext_resource type="AudioStream" uid="uid://cfsnk5axqabme" path="res://sounds/firework_explosion.wav" id="5_314s5"]
 
 [node name="SoundManager" type="Node3D"]
 script = ExtResource("1_mg75h")
@@ -12,3 +14,13 @@ stream = ExtResource("1_vqlrj")
 
 [node name="UnselectSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vyc5s")
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mqwba")
+volume_db = -20.0
+max_polyphony = 5
+
+[node name="FireworkExplosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_314s5")
+volume_db = -20.0
+max_polyphony = 5
