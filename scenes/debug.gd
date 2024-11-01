@@ -23,7 +23,7 @@ func _process(delta: float) -> void:
 		VRAM = RenderingServer.get_rendering_info(RenderingServer.RENDERING_INFO_VIDEO_MEM_USED) / 1024.0 / 1024.0
 		ring_count = get_tree().get_nodes_in_group("Ring").size()
 		ring_holder_count = get_tree().get_nodes_in_group("Ring Holder").size()
-		ring_holder_count = get_tree().get_nodes_in_group("Rocket").size()
+		rocket_count = get_tree().get_nodes_in_group("Rocket").size()
 		data = "FPS: " + str(FPS) + "\n" + \
 		"Draw calls: " + str(draw_calls) + "\n" + \
 		"Frame time: " + frame_time + "ms\n" + \
