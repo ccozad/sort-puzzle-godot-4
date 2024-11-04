@@ -3,6 +3,7 @@ extends Node3D
 @onready var level_completed_mask: MeshInstance3D = $LevelCompletedMask
 @onready var level_completed_ground: MeshInstance3D = $LevelCompletedGround
 @onready var level_completed_dialog: VBoxContainer = $CanvasLayer/LevelCompletedDialog
+@onready var move_count_label: Label = $CanvasLayer/PanelContainer/MoveCountLabel
 
 var level_name = "tutorial"
 var thread
@@ -15,7 +16,9 @@ func _ready():
 	level_completed_mask.visible = false
 	level_completed_ground.visible = false
 	level_completed_dialog.visible = false
+	move_count_label.text = "Moves: 0"
 	GameManager.connect("level_completed", Callable(self, "_on_level_completed"))
+	GameManager.connect("move_completed", Callable(self, "_on_move_completed"))
 	load_level()
 
 func load_level():
@@ -48,6 +51,10 @@ func _on_level_completed():
 	level_completed_ground.visible = true
 	level_completed_dialog.visible = true
 	SoundManager.level_completed()
+
+func _on_move_completed():
+	print("Move completed")
+	move_count_label.text = "Moves: " + str(GameManager.move_count)
 
 func _on_back_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu.tscn")

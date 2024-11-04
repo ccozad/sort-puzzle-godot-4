@@ -6,14 +6,17 @@ const ROCKET_SHOW = preload("res://scenes/rocket_show.tscn")
 var source_id = null
 var destination_id = null
 var all_solved = false
+var move_count = 0
 
 var ring_stacks = {}
 
+signal move_completed()
 signal level_completed()
 var level_completed_broadcast = false
 
 func reset_level():
 	level_completed_broadcast = false
+	move_count = 0
 
 func spawn_ring_stack(root_node, parameters):
 	print("Spawn ring stack")
@@ -63,6 +66,8 @@ func process_ring_stack_click(id):
 		if transfer:
 			ring_stacks[source_id].pop()
 			ring_stacks[destination_id].push(top_source_group)
+			move_count = move_count + 1
+			move_completed.emit()
 			
 		ring_stacks[source_id].set_selected(false)
 		source_id = null

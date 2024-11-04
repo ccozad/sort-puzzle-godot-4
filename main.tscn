@@ -94,6 +94,21 @@ theme_override_fonts/font = ExtResource("4_4lyri")
 theme_override_font_sizes/font_size = 40
 text = "BACK"
 
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_bottom = 60.0
+grow_horizontal = 0
+
+[node name="MoveCountLabel" type="Label" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_4lyri")
+theme_override_font_sizes/font_size = 30
+text = "Moves: 0"
+horizontal_alignment = 1
+
 [node name="Ground" type="MeshInstance3D" parent="."]
 transform = Transform3D(90, 0, 0, 0, -2.18557e-06, 1, 0, -50, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("QuadMesh_wf5s0")
