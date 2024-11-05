@@ -5,7 +5,6 @@ extends Node3D
 @onready var level_completed_dialog: VBoxContainer = $CanvasLayer/LevelCompletedDialog
 @onready var move_count_label: Label = $CanvasLayer/PanelContainer/MoveCountLabel
 
-var level_name = "tutorial"
 var thread
 var current_level
 var rocket_show
@@ -22,12 +21,12 @@ func _ready():
 	load_level()
 
 func load_level():
-	current_level = LevelManager.load_level(level_name)
+	current_level = LevelManager.load_level(GameManager.level_name)
 	current_level.init(self)
 
 func _input(event):
 	if Input.is_action_just_pressed("main_menu"):
-		get_tree().change_scene_to_file("res://scenes/menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/level_select.tscn")
 
 func _process(delta: float):
 	if level_completed and not celebration_started:
@@ -57,4 +56,4 @@ func _on_move_completed():
 	move_count_label.text = "Moves: " + str(GameManager.move_count)
 
 func _on_back_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/level_select.tscn")

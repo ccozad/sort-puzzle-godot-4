@@ -7,6 +7,7 @@ var source_id = null
 var destination_id = null
 var all_solved = false
 var move_count = 0
+var level_name = ""
 
 var ring_stacks = {}
 

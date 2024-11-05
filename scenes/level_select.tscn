@@ -1,0 +1,138 @@
+[gd_scene load_steps=7 format=3 uid="uid://g7surs0mnfu3"]
+
+[ext_resource type="Texture2D" uid="uid://ttkletvknggo" path="res://art/park.jpg" id="1_evuql"]
+[ext_resource type="Script" path="res://scenes/level_select.gd" id="1_kn2d4"]
+[ext_resource type="Environment" uid="uid://d3unpsgy7av1h" path="res://main_envrionment.tres" id="2_osw4f"]
+[ext_resource type="FontFile" uid="uid://chorqpu0y003a" path="res://fonts/Cartoonish.ttf" id="3_fluqy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5e2x"]
+albedo_texture = ExtResource("1_evuql")
+
+[sub_resource type="QuadMesh" id="QuadMesh_tiawl"]
+material = SubResource("StandardMaterial3D_a5e2x")
+
+[node name="LevelSelect" type="Node3D"]
+script = ExtResource("1_kn2d4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(50, 0, 0, 0, 25, 0, 0, 0, 1, 0, 12.7309, -9.02913)
+mesh = SubResource("QuadMesh_tiawl")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.4018, 16.999)
+environment = ExtResource("2_osw4f")
+fov = 45.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_osw4f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8003, 16.9001, 0)
+light_color = Color(1, 1, 0.721569, 1)
+light_energy = 0.823
+directional_shadow_mode = 0
+directional_shadow_max_distance = 63.4
+sky_mode = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 5
+
+[node name="Level1Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "1
+"
+
+[node name="Level2Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "2
+"
+
+[node name="Level3Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "3"
+
+[node name="Level4Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "4"
+
+[node name="Level5Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "5"
+
+[node name="Level6Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "6
+"
+
+[node name="Level7Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "7
+"
+
+[node name="Level8Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "8"
+
+[node name="Level9Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "9"
+
+[node name="Level10Button" type="Button" parent="CanvasLayer/GridContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_fluqy")
+theme_override_font_sizes/font_size = 40
+text = "10"
+
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level5Button" to="." method="_on_level_5_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level6Button" to="." method="_on_level_6_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level7Button" to="." method="_on_level_7_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level8Button" to="." method="_on_level_8_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level9Button" to="." method="_on_level_9_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/GridContainer/Level10Button" to="." method="_on_level_10_button_pressed"]
